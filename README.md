@@ -14,39 +14,42 @@
 
    软件版本信息  |系统/内核信息 |项目目录功能介绍
   -|-|-
-  Python 3.7.9     |Centos 7.2 | tools jekins jobs相关xml配置
+  Python 3.6.8     |Centos 7.2 | tools jekins jobs相关xml配置
   Flask1.0.2    |3.10.0-862.6.3.el7.x86_64  |boot.py flask 程序启动入口文件
   python-jekins1.5.0   |           | python jenkins sdk 插件
 
 
 2.项目系统依赖包安装;  
-  (1).centos 7x系统安装支持包;  
+   (1).centos 7x系统安装支持包;  
    yum -y install python36 mysql-devel libxml2* mysql initscripts python36-devel python36-pip python36-setuptools mysql-devel libxml2*      mysql initscripts psmisc  
-   
-   
-   (2).安装项目依赖包pip方式;  
-   
+ 
+   (2).安装项目依赖包pip3方式;  
    /usr/local/bin/pip3.6 install --upgrade pip  
    /usr/local/bin/pip3.6 install --upgrade setuptools  
-   /usr/local/bin/pip3.6 install requests  
-   /usr/local/bin/pip3.6 install Jinja2==2.10  
-   /usr/local/bin/pip3.6 install flask==1.0.2  
-    /usr/local/bin/pip3.6 install request==1.0.2  
-    /usr/local/bin/pip3.6 install Jinja2==2.10  
-    /usr/local/bin/pip3.6 install Flask-Cors==3.0.6  
-    /usr/local/bin/pip3.6 install flask-sqlalchemy  
-    /usr/local/bin/pip3.6 install flask_restful  
-    /usr/local/bin/pip3.6 install  python-jenkins==1.5.0
-    
-3.接口文档介绍;  
-(1).jenkisn 构建job主机接口;  
+   /usr/local/bin/pip3.6 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-**jenkinsManager-api 接口文档：** 
+3.修改项目配置文件 (MYSQL文件)
+  cat config.py #新建数据库并且授权应用程序访问 (如下:op-cicd-api-v2)
+  SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.1.101:3306/op-cicd-api-v2'
+  
+4.初始化数据库表结构设置授权管理员账号权限 操作流程:初始化数据库表---> 创建管理员账户---> 输入账号密码
+$ python3.7 manage.py  
+usage: manage.py <command>
+command:
+    	init_db
+		-- 初始化数据库
+	create_admin
+		-- 创建管理员账户
+	enable_admin
+		-- 启用管理员账户，用于登录失败次数过多账户被禁用时使用
 
-- 创建job 任务
+5.登录获取应用token参数如下:
+ **token-api 接口文档：** 
+
+- 输入用户密码登录获取token
 
 **请求URL：** 
-- ` http://devops-bmc-api.com/jenkins/api/v1 `
+- ` http://devops-bmc-api.com/account/users/login/ `
   
 **请求方式：**
 - POST  
@@ -58,57 +61,33 @@
 
 |参数   |必填   |类型   |说明   |
 | ------------  | ------------ | ------------ | ------------ |
-| instance_ip    |是   |str   |执行端合法ip地址, 默认值:None,支持多个ip地址添加","隔开".
-| appname       |是   |str    |应用名称，
-| giturl        |是   |str    |代码仓库git地址
-| branch        |是   |str    |代码仓库应用分支
-| type          |是   |str    |应用类型1.java 2.python 3.go 4.node.js
-| appversion    |是   |str    |应用当前的版本
+| username    |是   |str   |系统授权用户名
+| password    |是   |str    |系统授权用户名
+| type        |是   |str    |类型分为: standard 系统设置用户 ldap 用户
+
  **请求示例**
-```
-{
- "instance_ip":"192.168.1.2,192.168.1.3",  	 
- "appname":"op-bmc-api-004",
- "giturl":"https://github.com/breaklinux/devops-bmc-api.git",
- "branch":"master",
- "type":"1",
- "appversion":"1.0.0.2"
+ ```
+ http://devops-bmc-api.com/account/users/login/
+ {
+"username":"admin",
+"password":"admin@123",
+"type":"standard"
 }
+ ```
+**返回参数**
 ```
- **返回参数**
-```
+http://devops-bmc-api.com/account/users/login/
 {
-    "code": 0,
     "data": {
-        "appname": "op-bmc-api-003"
+        "is_supper": true,
+        "nickname": "管理员",
+        "permissions": [],
+        "token": "3df9a449d44f4183a45ba9a43cc61fbc"  #Token 有过期时间每一次请求需要带token
     },
-    "msg": "job create success"
+    "message": ""
 }
 ```
 
- **备注** 
 
-- code状态码描述
-  0 表示系统正常响应;
-  1 表示系统内部出现问题;  
- 
-**删除 job 任务: **
 
-**请求URL：** 
-- `http://devops-bmc-api.com/jenkins/api/v1 `
-  
-**请求方式：**
-- Delete 
- **请求示例**
- ```
-{
- "appname":"op-bmc-api003"
- }
-```
- **返回参数**
- ```
-{
-    "code": 0,
-    "msg": "op-bmc-api-003 delete success"
-}
-```
+
