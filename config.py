@@ -22,12 +22,12 @@ DOCKER_REGISTRY_SERVER = 'op-harbor.mumway.com'
 DOCKER_REGISTRY_AUTH = {'username': 'lijianxing', 'password': '11223344'}
 
 LDAP_CONFIG = {
-    'host': 'op-ldap.mumway.com',
+    'host': 'xxx',
     'port': 389,
     'is_openldap':  True,
     'base_dn': 'dc=xiavan,dc=com',
     'admin_dn': 'cn=admin,dc=xiavan,dc=com',
-    'admin_password': 'Ldap#xiavan2021',
+    'admin_password': 'xxx',
     'user_filter': 'cn',
 }
 
