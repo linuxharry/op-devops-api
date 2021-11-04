@@ -88,6 +88,112 @@ http://devops-bmc-api.com/account/users/login/
 }
 ```
 
+6.获取应用信息实例接口
+**请求URL：** 
+- ` http://devops-bmc-api.com/account/users/login/ `
+  
+**请求方式：**
+- GET  
+
+**格式：**  
+- JSON  
+
+**参数：** 
+
+**header带Token**
+--header 
+
+
+http://127.0.0.1:9000/app/api/v1?appname=op-nginx-api
+
+|参数   |必填   |类型   |说明   |
+| ------------  | ------------ | ------------ | ------------ |
+| group         |否   |str    |分组
+| appname       |否   |str    |应用名称
+| port          |否   |str    |应用端口
+| business      |否   |str    |业务线
+| page          |否   |int    |页面
+| page_size     |否   |int    |每页大小
+
+
+ **请求示例**
+ ```
+curl --location --request GET 'http://127.0.0.1:9000/app/api/v1?appname=op-nginx-api' \
+--header 'X-TOKEN: 3df9a449d44f4183a45ba9a43cc61fbc'
+
+```
+ **响应**
+ ```
+ {
+    "code": 0,
+    "total": 1,
+    "data": [
+        {
+            "id": 1,
+            "business": "op",
+            "group": "op",
+            "appname": "op-nginx-api",
+            "apptype": "python",
+            "giturl": "http://127.0.0.1:9000/ansible/host/v1",
+            "owner": "lijx",
+            "port": "2222",
+            "level": "低",
+            "used": "nginx运维测试",
+            "createtime": "2021-11-04 16:32:33"
+        }
+    ],
+    "msg": "success",
+    "columns": [
+        {
+            "name": "group",
+            "alias": "小组名称"
+        },
+        {
+            "name": "appname",
+            "alias": "应用名称"
+        },
+        {
+            "name": "level",
+            "alias": "应用级别"
+        },
+        {
+            "name": "apptype",
+            "alias": "应用类型"
+        },
+        {
+            "name": "business",
+            "alias": "业务线"
+        },
+        {
+            "name": "giturl",
+            "alias": "git地址"
+        },
+        {
+            "name": "owner",
+            "alias": "应用负责人"
+        },
+        {
+            "name": "port",
+            "alias": "服务端口"
+        },
+        {
+            "name": "used",
+            "alias": "用途"
+        },
+        {
+            "name": "createtime",
+            "alias": "创建时间"
+        }
+    ]
+}
+ ```
+
+
+
+ 
+  
+ 
+
 
 
 
