@@ -13,13 +13,13 @@ viewList = ["Dev", "Test", "Ontest", "Prod"]
 DEBUG = True
 TIME_ZONE = timezone('Asia/Shanghai')
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.11.101:3306/op-cicd-api-v2'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@192.168.1.101:3306/op-cicd-api-v2'
 # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'test.db')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_ECHO = False
 
-DOCKER_REGISTRY_SERVER = 'op-harbor.mumway.com'
-DOCKER_REGISTRY_AUTH = {'username': 'lijianxing', 'password': '11223344'}
+DOCKER_REGISTRY_SERVER = 'op-harbor.xxx.com'
+DOCKER_REGISTRY_AUTH = {'username': 'xxx', 'password': 'xxx'}
 
 LDAP_CONFIG = {
     'host': 'xxx',
