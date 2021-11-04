@@ -52,10 +52,7 @@ def init_db():
     import apps.ansibleChannelAuth.models
     import apps.ansibleManage.models
     import apps.configuration.models
-    # import apps.deploy.models
-    # import apps.assets.models
-    # import apps.schedule.models
-    # import apps.setting.models
+
 
     user_input = input('是否要初始化数据库，该操作会清空所有数据[y|n]？')
     if user_input.strip() == 'y':
