@@ -79,9 +79,9 @@ ldapHeader=[
 ]
 
 #服务启动配置文件
-ansibleApiUrl="https://op-apis.mumway.com/op-ansible-api/ansible/api/v1"
+ansibleApiUrl="https://op-apis.xxx.com/op-ansible-api/ansible/api/v1"
 channelID="c5655f1c-1cea-11ec-b4f2-00163e158a73"
-getChannelIp="https://op-apis.mumway.com/op-ansible-api/channel/ip/v1?"
+getChannelIp="https://op-apis.xxx.com/op-ansible-api/channel/ip/v1?"
 
 serviceMgHeader=[
     {"name":"source","alias":"来源ip地址"},{"name":"channelID","alias":"授权ID"},{"name":"username","alias":"使用用户"},
