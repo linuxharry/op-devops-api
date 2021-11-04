@@ -112,8 +112,8 @@ http://127.0.0.1:9000/app/api/v1?appname=op-nginx-api
 | appname       |否   |str    |应用名称
 | port          |否   |str    |应用端口
 | business      |否   |str    |业务线
-| page          |否   |int    |页面
-| page_size     |否   |int    |每页大小
+| page          |否   |int    |当前页面
+| page_size     |否   |int    |每页显示数据多少条
 
 
  **请求示例**
