@@ -7,24 +7,6 @@
 一.插件python-jenkins bug修复
 
 (1).插件版本 python-jenkins==1.5.0
-(2).获取jobs 出现如下错误
->>> server.get_jobs() 
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.6/site-packages/jenkins/__init__.py", line 768, in get_info
-    requests.Request('GET', self._build_url(url))
-  File "/usr/local/lib/python3.6/site-packages/jenkins/__init__.py", line 556, in jenkins_open
-    return self.jenkins_request(req, add_crumb, resolve_auth).text
-  File "/usr/local/lib/python3.6/site-packages/jenkins/__init__.py", line 575, in jenkins_request
-    self._request(req))
-  File "/usr/local/lib/python3.6/site-packages/jenkins/__init__.py", line 535, in _response_handler
-    response.raise_for_status()
-  File "/usr/local/lib/python3.6/site-packages/requests/models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 400 Client Error:  for url: http://172.21.206.227:8080/jenkins/api/json?tree=jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs[url,color,name,jobs]]]]]]]]]]
-
-(3).处理办法；找到文件
-vim /usr/local/lib/python3.6/site-packages/jenkins/__init__.py  +1020行 去掉 query=jobs_query 代码;
-
                
 二.接口文档;
 
