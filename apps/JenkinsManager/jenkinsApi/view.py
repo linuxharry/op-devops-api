@@ -104,18 +104,4 @@ def appsJenkinsDel():
     deletjos = JeninsDeploy()
     return deletjos.jenKinsdeleteJob(appname)
 
-# @jenkinsUrl.route('/api/v2', methods=['GET', 'POST', 'DELETE'])
-# def jobOpsRun():
-#     import json
-#     if request.method == "GET":
-#         job = JeninsDeploy()
-#         return job.getAllJob()
-#     elif request.method == "POST":
-#         pass
-#     elif request.method == "DELETE":
-#         pass
-#     else:
-#         parameterInfo = "不支持该方法,请检查"
-#         return Response(json.dumps({"code": 1, "data": parameterInfo}), mimetype='application/json')
-#
 
