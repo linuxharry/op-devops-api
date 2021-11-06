@@ -45,6 +45,5 @@ Werkzeug==0.16.0
 python-ldap==3.2.0
 python-jenkins==1.5.0
 ansible==2.7.5
-Jinja2==2.11.2
 paramiko==2.1.1
 PyYAML==3.10
