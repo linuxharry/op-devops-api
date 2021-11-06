@@ -88,4 +88,15 @@ INSERT INTO account_permissions (id, name, `desc`) VALUES (1302, 'assets_instanc
 INSERT INTO account_permissions (id, name, `desc`) VALUES (1303, 'assets_instance_edit', '实例管理-修改');
 INSERT INTO account_permissions (id, name, `desc`) VALUES (1304, 'assets_instance_del', '实例管理-删除');
 
+-- DNS管理 -> 私有dns解析管理
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1401, 'assets_privatedns_view', '私有DNS-查看');
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1402, 'assets_privatedns_add', '私有DNS-添加');
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1403, 'assets_privatedns_edit', '私有DNS-修改');
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1404, 'assets_privatedns_del', '私有DNS-删除');
+-- DNS管理 -> 私有dns服务管理
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1501, 'assets_privatedns_service_view', '私有DNS服务-查看');
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1502, 'assets_privatedns_service_start', '私有DNS服务-启动');
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1503, 'assets_privatedns_service_stop', '私有DNS服务-停止');
+INSERT INTO account_permissions (id, name, `desc`) VALUES (1504, 'assets_privatedns_service_restart', '私有DNS服务-重启');
+
 
