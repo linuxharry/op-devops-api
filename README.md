@@ -21,7 +21,7 @@
 
 2.项目系统依赖包安装;  
    (1).centos 7x系统安装支持包;  
-   yum -y install python36 mysql-devel libxml2* mysql initscripts python36-devel python36-pip python36-setuptools mysql-devel libxml2*      mysql initscripts psmisc  
+   yum -y install python36 mysql-devel libxml2* mysql initscripts python36-devel python36-pip python36-setuptools mysql-devel libxml2*  mysql initscripts psmisc python-devel openldap-devel
  
    (2).安装项目依赖包pip3方式;  
    /usr/local/bin/pip3.6 install --upgrade pip  
